@@ -1,0 +1,172 @@
+body{
+    background-image: url(https://img.freepik.com/free-vector/ai-concept-background-abstract-artificial-human-head-with-eyes-light-digital-future-vision-illustration_333792-87.jpg?t=st=1732008903~exp=1732012503~hmac=03c211f75e22514595b28f7851af397943f583e18cce2dc8afdded9eff09db67&w=1060);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+   
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    color: white;
+    margin-left: 600px;
+    
+}
+
+.card{
+    border: 3px solid skyblue ;
+    width: 450px;
+    height: 400px;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 10px 20px 30px rgba(255, 255, 255, 0.416);
+}
+
+h1{
+    position: absolute;
+    top: 5px;
+    right: 200px;
+}
+
+.divider{
+    border: 2px solid skyblue;
+    width: 100%;
+    position: absolute;
+    top: 80px;
+    margin-bottom: 50px;
+}
+
+input{
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
+    margin-top: 20px;
+}
+
+input::placeholder{
+
+
+color: white;
+}
+
+button{
+    width: 110%;
+    margin-top: 50px;
+    padding:7px ;
+    border-radius: 50px;
+    background-color: transparent;
+    transition: 0.5s;
+    border: 2px solid white;
+    color: white;
+}
+
+button:hover{
+    background-color: skyblue;
+    color: white;
+}
+
+#aa{
+    text-decoration: none;
+    color: white;
+    position: absolute;
+    bottom: 50px;
+    font-size: 15px;
+}
+
+.space{
+    position: absolute;
+    bottom: 90px;
+    right: 140px;
+   
+}
+
+.sign{
+    position: absolute;
+    top: 230px;
+    left: 25px;
+    color:white;
+    
+}
+
+.sign a{
+    text-decoration: none;
+    color: skyblue;
+}
+
+#heading{
+    position: absolute;
+    top: 5px;
+    right: 150px;
+}
+
+#couse{
+position: absolute;
+    top: 5px;
+    right: 300px;
+}
+
+.student{
+    position: absolute;
+    top: 90px;
+
+}
+
+#Notification{
+    position: absolute;
+   
+    right: 150px;
+}
+
+#complaint{
+    position: absolute;
+    right: 150px;
+}
+.comp{
+    position: absolute;
+    top: 90px;
+
+}
+
+.profile{
+    position: absolute;
+    top: 90px;
+
+}
+
+#prof{
+    position: absolute;
+    right: 200px;
+}
+
+#pass{
+    position: absolute;
+
+    right: 100px;
+}
+
+.password{
+    position: absolute;
+    top: 120px;
+}
+.report{
+margin-top: 90px;
+
+}
+
+th,td{
+    border: 2px solid white;
+    padding: 10px;
+
+}
+table{
+    border-collapse: collapse;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <a href="/adddept/"><i class="material-icons">add</i></a>
+    <table border="1">
+        <tr>
+        <th>Name of dept</th>
+        <th colspan="2">Action</th>
+        </tr>
+        {% for i in a  %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.Dept_Name}}</td>
+            <td><a href="/edit_department/{{i.id}}">edit</a>
+            <a href="/delete_department/{{i.id}}" onclick="return confirm('are you sure you want to delete?')">delete</a></td>        
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
