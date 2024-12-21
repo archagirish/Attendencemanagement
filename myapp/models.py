@@ -14,20 +14,24 @@ class CourseTable(models.Model):
     department_id=models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
     CourseName = models.CharField(max_length=100,null=True,blank=True)
 
+class SubjectTable(models.Model):
+    COURSE=models.ForeignKey(CourseTable,on_delete=models.CASCADE,null=True,blank=True)
+    subject = models.CharField(max_length=250,null=True,blank=True)
+
 
 
 class TeacherTable(models.Model):
     LOGINID=models.ForeignKey(LoginTable,on_delete=models.CASCADE,blank=True,null=True)
-    name = models.CharField(max_length=100,null=True,blank=True)
     DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
+    SUBJECT=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,null=True,blank=True)
+    name = models.CharField(max_length=100,null=True,blank=True)
     email = models.CharField(max_length=100,null=True,blank=True)
     phonenumber = models.BigIntegerField(max_length=100,null=True,blank=True)
 
 
 
 class  AttendanceTable(models.Model):
-    LOGINID=models.ForeignKey(LoginTable,on_delete=models.CASCADE,blank=True,null=True)
-    rollno = models.IntegerField(max_length=100,null=True,blank=True) 
+    StudentID=models.ForeignKey(LoginTable,on_delete=models.CASCADE,blank=True,null=True)
     day = models.CharField(max_length=100,null=True,blank=True)  
     hour = models.CharField(max_length=100,null=True,blank=True)
 
@@ -42,7 +46,9 @@ class StudentTable(models.Model):
     name = models.CharField(max_length=100,null=True,blank=True)
     email = models.CharField(max_length=100,null=True,blank=True)
     phonenumber = models.BigIntegerField(max_length=100,null=True,blank=True)
-    department = models.CharField(max_length=100,null=True,blank=True)
+    # department = models.CharField(max_length=100,null=True,blank=True)
+    DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
+
 
 
 class ReportTable(models.Model):
@@ -60,18 +66,17 @@ class ComplaintTable(models.Model):
     report = models.CharField(max_length=100,null=True,blank=True)
 
 class DutyrequestTable(models.Model):
-    TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
+    STUDENTID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)
     department=models.CharField(max_length=100,null=True,blank=True)
     reason=models.CharField(max_length=100,null=True,blank=True)
-
-    
-
-
 
 
 class Notification_model(models.Model):
     Notification = models.CharField(max_length=100, null=True, blank=True)
     created_at = models.DateField(auto_now_add=True, null=True,blank=True)
     updated_at = models.DateField(auto_now=True)
+
+
+
 
     

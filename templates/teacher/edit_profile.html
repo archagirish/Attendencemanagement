@@ -14,12 +14,39 @@
             <div class="divider"></div>
 
     <form class="profile">
-        <input type="text" placeholder="Name of teacher"><br><br>
-        <input type="text" placeholder="Subject"><br><br>
-        <input type="text" placeholder="Department"><br><br>
-        <input type="text" placeholder="Email ID"><br><br>
-        <input type="text" placeholder="Phone Number">
-        <button type="submit">update</button> 
+        <table border="1">
+          <tr>
+            <td><input type="text" placeholder="Name of teacher" value="{{ a.name }}"><br><br></td>
+          </tr>  
+          <tr>
+            <td>
+                <input type="text" placeholder="Subject" value="{{ a.DEPARTMENT.Dept_Name }}"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <input type="text" placeholder="Department"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <input type="text" placeholder="Email ID"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <input type="text" placeholder="Phone Number"><br><br>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <button type="submit">update</button> 
+            </td>
+          </tr>
+       
+
+        </table>
+        
     </form>
 </div>
 </div>

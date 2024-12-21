@@ -1,4 +1,4 @@
-body{
+.body{
     background-image: url(https://img.freepik.com/free-vector/ai-concept-background-abstract-artificial-human-head-with-eyes-light-digital-future-vision-illustration_333792-87.jpg?t=st=1732008903~exp=1732012503~hmac=03c211f75e22514595b28f7851af397943f583e18cce2dc8afdded9eff09db67&w=1060);
     background-repeat: no-repeat;
     background-size: cover;
@@ -11,6 +11,7 @@ body{
     justify-content: center;
     height: 100vh;
     align-items: center;
+    /* background-image: url(https://img.freepik.com/free-vector/elegant-dark-background-with-golden-details_23-2148438266.jpg?t=st=1734766815~exp=1734770415~hmac=7d95c5885e57d563f3cded52d727207e07614cb8d0d0d0c2db3d2ddb8e3dd43d&w=1060); */
     color: white;
     margin-left: 600px;
     

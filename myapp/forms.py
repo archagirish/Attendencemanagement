@@ -22,7 +22,14 @@ class Course_form(ModelForm):
 class Adduser_form(ModelForm):
     class Meta:
         model=StudentTable
-        fields=['name','email','phonenumber','department']     
+        fields=['name','email','phonenumber','DEPARTMENT']  
+
+class Teacher_form(ModelForm):
+    class Meta:
+        model= TeacherTable
+        fields=['name','email','phonenumber','DEPARTMENT'] 
+
+
 
 
 

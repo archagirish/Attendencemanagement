@@ -1,10 +1,12 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <div class="login" >
@@ -18,9 +20,9 @@
         <input type="text" placeholder="Name of student" name="name"><br><br>
         <input type="text" placeholder="Email ID" name="email"><br><br>
         <input type="text" placeholder="Phone Number" name="phonenumber"><br><br>
-        <select name="department">
+        <select name="DEPARTMENT">
             {% for i in val  %}
-            <option value="{{i.Dept_Name}}">{{i.Dept_Name}}</option>
+            <option value="{{i.id}}">{{i.Dept_Name}}</option>
             {% endfor %}
         </select><br>
         <input type="text" placeholder="Username" name="username"><br><br>

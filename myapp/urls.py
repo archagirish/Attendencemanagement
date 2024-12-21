@@ -30,6 +30,8 @@ urlpatterns = [
     path('editstudent/<int:pk>',Editstudent.as_view(),name="editstudent"),
     path('deletestudent/<int:pk>',Deletestudent.as_view(),name='deletestudent'),
     path('manage_teacher/', Manageteacher.as_view(),name='manage_teacher'),
+    path('editteacher/<int:pk>',Editteacher.as_view(),name="editteacher"),
+    path('deleteteacher/<int:pk>',Deleteteacher.as_view(),name="deleteteacher"),
     path('student/', Student.as_view(),name='student'),
     path('teacher/', Teacher.as_view(),name='teacher'),
     
@@ -37,7 +39,8 @@ urlpatterns = [
     # //////////////////////////////////////// TEACHER ///////////////////////////////////
 
 
-path('add_report/', Add_report.as_view(),name='report'),
+path('teacher_dashboard/', Teacher_dashboard.as_view(),name='teacher_dashboard'),
+path('add_report/', Add_report.as_view(),name='add_report'),
 path('edit_profile/', Edit_profile.as_view(),name='edit_profile'),
 path('edit_report/', Edit_report.as_view(),name='edit_report'),
 path('manage_attendance/', Manage_attendence.as_view(),name='manage_attendence'),

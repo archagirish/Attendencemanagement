@@ -1,31 +1,45 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div>
-        <a href="/student/"><i class="material-icons">add</i></a>
+        <a href="/teacher/"><i class="material-icons">add</i></a>
+
     </div>
+    <div class="login">
+
     <table border="1">
         <tr>
+        <th>NO</th>
         <th>Name of teacher</th>
-        <th>Name of subject/th>
+        <th>Name of subject</th>
         <th>Phone number</th>
         <th colspan="2">Action</th>
         </tr>
+        {% for i in a %}
+
         <tr>
-            <td>cs</td>
-            <td>abc</td>
-            <td>098</td>
-            <td><a href="#">edit</a>
-            <a href="#">delete</a></td>
+            <td>{{forloop.counter}}</td>
+            
+            <td>{{i.name}}</td>
+            <td>{{i.DEPARTMENT.Dept_Name}}</td>
+            <td>{{i.phonenumber}}</td>
+        
+            <td><a href="/editteacher/{{i.id}}">edit</a>
+            <a href="/deleteteacher/{{i.id}}">delete</a></td>
            
         </tr>
-        
+        {% endfor %}
     </table>
+</div>
 </body>
 </html>

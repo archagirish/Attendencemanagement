@@ -11,24 +11,24 @@
 <body>
     <div class="login" >
         <div class="card">
-            <h1>Student</h1>
+            <h1 id="heading">Teacher</h1>
 
             <div class="divider"></div>
 
-    <form class="student" method="post">
+    <form class="space" method="post">
         {% csrf_token %}
-        <input type="text" placeholder="Name of student" name="name" value="{{b.name}}"><br><br>
-        <input type="text" placeholder="Email ID" name="email" value="{{b.email}}"><br><br>
+        <input type="text" placeholder="Name of teacher" name="name" value="{{b.name}}"><br><br>
         <input type="text" placeholder="Phone Number" name="phonenumber" value="{{b.phonenumber}}" value=""><br><br>
         <select name="department">
             {% for i in val  %}
             <option value="{{i.id}}" {% if b.DEPARTMENT.id == i.id %}selected{% endif %}>{{i.Dept_Name}}</option>
-             {% endfor %}
+            {% endfor %}
         </select><br>
         <input type="text" placeholder="Username" name="username" value="{{b.LOGINID.username}}"><br><br>
-        <button type="submit">update</button> 
+        <button type="submit">Update</button> 
     </form>
 </div>
 </div>
+    
 </body>
 </html>

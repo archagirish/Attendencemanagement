@@ -1,16 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
     <div>
         <a href="/student/"><i class="material-icons">add</i></a>
+        
+
     
     </div>
+    <div class="login">
     <table border="1">
         <tr>
             <th>id</th>
@@ -26,12 +33,13 @@
             <td>{{i.name}}</td>
             <td>{{i.email}}</td>
             <td>{{i.phonenumber}}</td>
-            <th>{{i.department}}</th>
+            <th>{{i.DEPARTMENT.Dept_Name}}</th>
             <td><a href="/editstudent/{{i.id}}">edit</a>
             <a href="/deletestudent/{{i.id}}"  onclick="return confirm('are you sure you want to delete?')">delete</a></td>
            
         </tr>
         {% endfor %}
     </table>
+</div>
 </body>
 </html>

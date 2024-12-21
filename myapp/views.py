@@ -15,7 +15,10 @@ class Login(View):
         login_obj=LoginTable.objects.get(username=username,password=password)
         if login_obj.type=="admin":
             return HttpResponse('''<script>alert("Welcome to adminhome" );window.location="dashboard/"</script>''')
-        # elif login_obj.type=="teacher":
+        elif login_obj.type=="teacher":
+            request.session['LOGINID']=login_obj.id
+            return HttpResponse('''<script>alert("Welcome to Teacherhome" );window.location="teacher_dashboard/"</script>''')
+
         
 class dashboard(View):
     def get(self, request):
@@ -164,8 +167,33 @@ class Managestudent(View):
     
 class Manageteacher(View):
     def get(self,request):
-        return render(request,'admin/manageteacher.html')
+        obj=TeacherTable.objects.all()
+        return render(request,'admin/manageteacher.html',{'a':obj})
     
+class Editteacher(View):
+    def get(self,request,pk):
+         c=TeacherTable.objects.get(pk=pk) 
+         val=DepartmentTable.objects.all()
+         return render(request,'admin/editteacher.html', {'b':c,'val':val}) 
+        
+    def post(self,request,pk):
+        c=TeacherTable.objects.get(pk=pk)
+        d=Teacher_form(request.POST,instance=c)
+        if d.is_valid():
+            f=d.save(commit=False)
+            department=request.POST['department']
+            f.DEPARTMENT=DepartmentTable.objects.get(id=department)
+            f.save()
+            return redirect('/manage_teacher')
+        
+class Deleteteacher(View):
+    def get(self,request,pk):
+        c=TeacherTable.objects.get(pk=pk)
+        c.delete()
+        return HttpResponse('''<script>alert("deleted successfully");window.location="/manage_teacher/"</script>''')
+
+
+  
 class Student(View):
     def get(self,request):
         obj=DepartmentTable.objects.all()
@@ -183,12 +211,17 @@ class Student(View):
 class Editstudent(View):
     def get(self,request,pk):
         c=StudentTable.objects.get(pk=pk) 
-        return render(request,'admin/edit_student.html', {'b':c}) 
+        val=DepartmentTable.objects.all()
+        return render(request,'admin/edit_student.html', {'b':c,'val':val}) 
     
     def post(self,request,pk):
         c=StudentTable.objects.get(pk=pk)
         d=Adduser_form(request.POST,instance=c)
         if d.is_valid():
+            f=d.save(commit=False)
+            department=request.POST['department']
+            f.DEPARTMENT=DepartmentTable.objects.get(id=department)
+            f.save()
             d.save()
             return redirect('manage_student')
 
@@ -201,22 +234,37 @@ class Deletestudent(View):
    
 class Teacher(View):
     def get(self,request):
-        return render(request,'admin/teacher.html')
+        obj=DepartmentTable.objects.all()
+        return render(request,'admin/teacher.html', {'val': obj})
     
-
-
+    def post(self,request):
+        c=Teacher_form(request.POST)
+        if c.is_valid():
+            f=c.save(commit=False)
+            f.LOGINID=LoginTable.objects.create(username=request.POST['username'],password=request.POST['password'], type="teacher")
+            # department=request.POST['department']
+            # f.DEPARTMENT=DepartmentTable.objects.get(id=department)
+            f.save()
+            return redirect('/manage_teacher')
+        
 
 
 # ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
 
-
+class Teacher_dashboard(View):
+    def get(self,request):
+        return render(request,'teacher/teacher_dashboard.html')
+    
+    
 class Add_report(View):
     def get(self,request):
         return render(request,'teacher/add_report.html')
     
+    
 class Edit_profile(View):
     def get(self,request):
-        return render(request,'teacher/edit_profile.html')
+        obj = TeacherTable.objects.get(LOGINID_id=request.session['LOGINID'])
+        return render(request,'teacher/edit_profile.html',{'a':obj})
     
 class Edit_report(View):
     def get(self,request):

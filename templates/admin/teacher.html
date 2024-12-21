@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     <div class="login" >
@@ -13,10 +15,20 @@
 
             <div class="divider"></div>
 
-    <form class="space">
-        <input type="text" placeholder="Name of teacher"><br><br>
-        <input type="text" placeholder="Name of subject"><br><br>
-        <input type="text" placeholder="Phone Number"><br>
+    <form class="space" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="Name of teacher" name="name"><br><br>
+        <input type="text" placeholder="Email" name="email"><br><br>
+        <input type="text" placeholder="Phone Number" name="phonenumber"><br><br>
+        <select name="DEPARTMENT">
+            {% for i in val  %}
+            <option value="{{i.id}}">{{i.Dept_Name}}</option>
+            {% endfor %}
+        </select><br>
+        <input type="text" placeholder="Username" name="username"><br><br>
+        <input type="password" placeholder="password" name="password"><br><br>
+
+    
         <button type="submit">Submit</button> 
     </form>
 </div>
