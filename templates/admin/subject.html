@@ -1,0 +1,37 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+        .space1{
+           padding: 20px 100px;
+        }
+    </style>
+</head>
+<body class="body">
+    <div class="login" >
+        <div class="card">
+            <h1 id="heading">Subject</h1>
+
+            <div class="divider"></div>
+
+    <form class="space1" method="post">
+        {% csrf_token %}
+        <select name="DEPARTMENT">
+            {% for i in val  %}
+            <option value="{{i.id}}">{{i.Dept_Name}}</option>
+            {% endfor %}
+        </select><br>
+        <input  type="text" name="subject" placeholder="Name of subject"><br><br>
+        <button  type="submit">Add Subject</button> 
+    </form>
+</div>
+</div>
+</body>
+</html>

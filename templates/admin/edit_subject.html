@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
+</head>
+<body>
+    <div class="login" >
+        <div class="card">
+            <h1 id="heading">Subject</h1>
+
+            <div class="divider"></div>
+
+    <form class="space" method="post">
+        {% csrf_token %}
+        <input type="text" name="Course" placeholder="Course">
+        <input type="text" name="Sub_Name" placeholder="Name of subject"><br><br>
+        <button type="submit">update</button> 
+    </form>
+</div>
+</div>
+</body>
+</html>

@@ -247,7 +247,51 @@ class Teacher(View):
             f.save()
             return redirect('/manage_teacher')
         
-
+class Subject(View):
+    def get(self,request):
+        obj=DepartmentTable.objects.all()
+        return render(request,'admin/subject.html',{'val': obj})
+    def post(self,request):
+        c=Subject_form(request.POST)
+        if c.is_valid():
+            f=c.save(commit=False)
+            departmentid=request.POST['DEPARTMENT']
+            obj=DepartmentTable.objects.get(id=departmentid)
+            f.DEPARTMENT=obj
+            f.save()
+            return redirect('/manage_subject')
+        
+class Managesubject(View):
+    def get(self,request):
+        dept=DepartmentTable.objects.all()
+        obj=SubjectTable.objects.all()
+        return render(request,'admin/manage_subject.html',{'a':obj, 'b':dept})
+class search_subject(View):
+    pass   
+    
+class Deletesubject(View):
+    def get(self,request,pk):
+        c=SubjectTable.objects.get(pk=pk)
+        c.delete()
+        return HttpResponse('''<script>alert("deleted successfully");window.location="/dashboard/"</script>''')
+    
+class Editsubject(View):
+    def get(self,request,pk):
+        c=SubjectTable.objects.get(pk=pk) 
+        val=DepartmentTable.objects.all()
+        return render(request,'admin/edit_subject.html', {'b':c,'val':val}) 
+    
+    def post(self,request,pk):
+        c=SubjectTable.objects.get(pk=pk)
+        d=Adduser_form(request.POST,instance=c)
+        if d.is_valid():
+            f=d.save(commit=False)
+            department=request.POST['department']
+            f.DEPARTMENT=DepartmentTable.objects.get(id=department)
+            f.save()
+            d.save()
+            return redirect('manage_subject')
+    
 
 # ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
 
@@ -264,6 +308,7 @@ class Add_report(View):
 class Edit_profile(View):
     def get(self,request):
         obj = TeacherTable.objects.get(LOGINID_id=request.session['LOGINID'])
+
         return render(request,'teacher/edit_profile.html',{'a':obj})
     
 class Edit_report(View):

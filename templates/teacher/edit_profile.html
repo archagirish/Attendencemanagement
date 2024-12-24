@@ -1,10 +1,12 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="{% static 'edit.css' %}">
 </head>
 <body>
     <div class="login" >
@@ -14,28 +16,28 @@
             <div class="divider"></div>
 
     <form class="profile">
-        <table border="1">
+        <table>
           <tr>
             <td><input type="text" placeholder="Name of teacher" value="{{ a.name }}"><br><br></td>
           </tr>  
           <tr>
             <td>
-                <input type="text" placeholder="Subject" value="{{ a.DEPARTMENT.Dept_Name }}"><br><br>
+                <input type="text" placeholder="Subject" value="{{ a.SUBJECT.subject}}"><br><br>
             </td>
           </tr>
           <tr>
             <td>
-                <input type="text" placeholder="Department"><br><br>
+                <input type="text" placeholder="Department" value="{{ a.DEPARTMENT.Dept_Name }}  "><br><br>
             </td>
           </tr>
           <tr>
             <td>
-                <input type="text" placeholder="Email ID"><br><br>
+                <input type="text" placeholder="Email ID" value="{{ a.email }}"><br><br>
             </td>
           </tr>
           <tr>
             <td>
-                <input type="text" placeholder="Phone Number"><br><br>
+                <input type="text" placeholder="Phone Number" value="{{ a.phonenumber }}"><br><br>
             </td>
           </tr>
           <tr>

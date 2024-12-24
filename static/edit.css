@@ -1,0 +1,83 @@
+/* General reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Login container */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 100%;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+#prof {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.divider {
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 15px 0;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.profile input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #003f7f;
+}

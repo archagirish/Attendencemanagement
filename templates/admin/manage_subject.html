@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body class="body">
+    <a href="/subject/"><i class="material-icons">add</i></a>
+    <div class="login">
+
+    <table border="1">
+        <tr><td colspan="3">
+            <select name="" id="">
+            {% for i in b %}
+            <option value="1">{{ i.Dept_Name }}</option>
+            {% endfor %}
+        </select>
+        <a href="/search_subject"><button>submi</button></a>
+    </td>
+    </tr>
+        
+        </tr>
+        <tr>
+        <th>id</th>
+        <th>Name of subject</th>
+        <th colspan="2">Action</th>
+        </tr>
+        {% for i in a  %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            
+            <td>{{ i.subject }}</td>
+            <td><a href="/edit_department/{{i.id}}">edit</a>
+            <a href="/delete_department/{{i.id}}" onclick="return confirm('are you sure you want to delete?')">delete</a></td>        
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+</body>
+</html>

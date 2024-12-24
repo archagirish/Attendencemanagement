@@ -1,5 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .body{
-    background-image: url(https://img.freepik.com/free-vector/ai-concept-background-abstract-artificial-human-head-with-eyes-light-digital-future-vision-illustration_333792-87.jpg?t=st=1732008903~exp=1732012503~hmac=03c211f75e22514595b28f7851af397943f583e18cce2dc8afdded9eff09db67&w=1060);
+    background-image: url('https://img.freepik.com/free-vector/ai-concept-background-abstract-artificial-human-head-with-eyes-light-digital-future-vision-illustration_333792-87.jpg?t=st=1732008903~exp=1732012503~hmac=03c211f75e22514595b28f7851af397943f583e18cce2dc8afdded9eff09db67&w=1060');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -53,6 +58,10 @@ input{
     margin-top: 20px;
 }
 
+input1::placeholder{
+
+    color: white;
+    }
 input::placeholder{
 
 
@@ -89,6 +98,13 @@ button:hover{
     right: 140px;
    
 }
+.space1{
+    position: absolute;
+    bottom: 90px;
+    right: 50px;
+   
+}
+
 
 .sign{
     position: absolute;

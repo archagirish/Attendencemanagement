@@ -15,7 +15,7 @@ class CourseTable(models.Model):
     CourseName = models.CharField(max_length=100,null=True,blank=True)
 
 class SubjectTable(models.Model):
-    COURSE=models.ForeignKey(CourseTable,on_delete=models.CASCADE,null=True,blank=True)
+    DEPARTMENT=models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
     subject = models.CharField(max_length=250,null=True,blank=True)
 
 

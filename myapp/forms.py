@@ -29,6 +29,11 @@ class Teacher_form(ModelForm):
         model= TeacherTable
         fields=['name','email','phonenumber','DEPARTMENT'] 
 
+class Subject_form(ModelForm):
+    class Meta:
+        model= SubjectTable
+        fields=['subject']
+
 
 
 
