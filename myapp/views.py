@@ -93,12 +93,24 @@ class Dept(View):
             return redirect('manage_dept')
     
 class Complaint(View):
-    def get(self,request):
-        return render(request, 'admin/complaint.html') 
+   def get(self, request):
+        obj=ComplaintTable.objects.all()
+        return render(request, 'admin/add_complaint.html',{'val': obj})
+   def post(self,request):
+        c=Complaint_form(request.POST)
+        if c.is_valid():
+            c.save()
+            return redirect('manage_complaint')
 
 class Editcomp(View):
     def get(self,request):
         return render(request,'admin/edit_complaint.html')
+    
+class Deletecomp(View):
+     def get(self,request,pk):
+        e=ComplaintTable.objects.get(pk=pk)
+        e.delete()
+        return HttpResponse('''<script>alert("deleted successfully");window.location="/manage_complaint/"</script>''')    
 
 class Editnotification(View):
     def get(self,request):
@@ -106,7 +118,8 @@ class Editnotification(View):
 
 class Managecomp(View):
     def get(self,request):
-        return render(request,'admin/manage_complaint.html') 
+        obj=ComplaintTable.objects.all()
+        return render(request,'admin/manage_complaint.html',{'val':obj}) 
     
 class Managecourse(View):
     def get(self,request):
@@ -266,9 +279,21 @@ class Managesubject(View):
         dept=DepartmentTable.objects.all()
         obj=SubjectTable.objects.all()
         return render(request,'admin/manage_subject.html',{'a':obj, 'b':dept})
-class search_subject(View):
-    pass   
     
+class search_subject(View):
+    def get(self,request):
+        dept_id = request.POST['dept']
+        dept=DepartmentTable.objects.all()
+        print("$$$$$$$$$$$$$$", dept)
+        obj=SubjectTable.objects.filter(DEPARTMENT_id=dept_id)
+        return render(request,'admin/manage_subject.html',{'a':obj, 'b':dept})
+            
+    def post(self,request):
+        dept_id = request.POST['dept']
+        print("$$$$$$$$$$$$$$", dept_id)
+        obj=SubjectTable.objects.filter(DEPARTMENT_id=dept_id)
+        return render(request,'admin/manage_subject.html',{'a':obj})
+            
 class Deletesubject(View):
     def get(self,request,pk):
         c=SubjectTable.objects.get(pk=pk)
@@ -301,10 +326,15 @@ class Teacher_dashboard(View):
     
     
 class Add_report(View):
-    def get(self,request):
-        return render(request,'teacher/add_report.html')
-    
-    
+    def get(self, request):
+        obj=ReportTable.objects.all()
+        return render(request, 'teacher/add_report.html',{'val': obj})
+    def post(self,request):
+        c=Addreport(request.POST)
+        if c.is_valid():
+            c.save()
+            return redirect('manage_report')
+          
 class Edit_profile(View):
     def get(self,request):
         obj = TeacherTable.objects.get(LOGINID_id=request.session['LOGINID'])
@@ -315,9 +345,22 @@ class Edit_report(View):
     def get(self,request):
         return render(request,'teacher/edit_report.html')
     
+class Attendance(View):
+    def get(self, request):
+        obj=AttendanceTable.objects.all()
+        return render(request, 'teacher/add_complaint.html',{'val': obj})
+    def post(self,request):
+        c=Complaint_form(request.POST)
+        if c.is_valid():
+            c.save()
+            return redirect('manage_complaint')
+    
+    
 class  Manage_attendence(View):
     def get(self,request):
-        return render(request,'teacher/manage_attendance.html')
+        obj=AttendanceTable.objects.all()
+        return render(request,'teacher/manage_attendance.html',{'val':obj})
+    
     
 class Manage_report(View):
     def get(self,request):
@@ -351,6 +394,11 @@ class Viewnotification(View):
     def get(self,request):
         return render(request,'teacher/viewnotification.html')
 
+
     
+
+     
+
+
 
         

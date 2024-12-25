@@ -34,6 +34,18 @@ class Subject_form(ModelForm):
         model= SubjectTable
         fields=['subject']
 
+class Addreport(ModelForm):
+    model= ReportTable
+    fields=['date','report','reply']
+
+class Complaint_form(ModelForm):
+    model= ComplaintTable
+    fields=['date','complaint','reply','report']
+    
+class Attendance_form(ModelForm):
+    model = AttendanceTable
+    fields =['day','hour'] 
+
 
 
 

@@ -37,8 +37,7 @@ urlpatterns = [
     path('subject/', Subject.as_view(),name='subject'),
     path('managesubject/',Managesubject.as_view(),name='managesubject'),
     path('search_subject/',search_subject.as_view(),name='search_subject'),
-    path('delete/<int:pk>', Deletesubject.as_view(),name='deletesubject'),
-    path('edit/<int:pk>', Editsubject.as_view(),name='editsubject'),
+    path('delete_subject/<int:pk>', Deletesubject.as_view(),name='deletesubject'),
     
     
     # //////////////////////////////////////// TEACHER ///////////////////////////////////

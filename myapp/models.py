@@ -30,11 +30,6 @@ class TeacherTable(models.Model):
 
 
 
-class  AttendanceTable(models.Model):
-    StudentID=models.ForeignKey(LoginTable,on_delete=models.CASCADE,blank=True,null=True)
-    day = models.CharField(max_length=100,null=True,blank=True)  
-    hour = models.CharField(max_length=100,null=True,blank=True)
-
 class TimetableTable(models.Model):
     Date = models.CharField(max_length=100,null=True,blank=True)
     Subject = models.CharField(max_length=100,null=True,blank=True)
@@ -49,6 +44,11 @@ class StudentTable(models.Model):
     # department = models.CharField(max_length=100,null=True,blank=True)
     DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
 
+class  AttendanceTable(models.Model):
+    StudentID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)
+    day = models.CharField(max_length=100,null=True,blank=True)  
+    hour = models.CharField(max_length=100,null=True,blank=True)
+
 
 
 class ReportTable(models.Model):
@@ -60,10 +60,9 @@ class ReportTable(models.Model):
 
 class ComplaintTable(models.Model):
     STUDENTID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)
-    date = models.CharField(max_length=100,null=True,blank=True)
+    date = models.DateField(null=True,blank=True)
     complaint = models.CharField(max_length=100,null=True,blank=True)
     reply = models.CharField(max_length=100,null=True,blank=True)
-    report = models.CharField(max_length=100,null=True,blank=True)
 
 class DutyrequestTable(models.Model):
     STUDENTID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)

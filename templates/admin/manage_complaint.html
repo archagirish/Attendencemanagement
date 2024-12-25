@@ -6,33 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}"> -->
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 </head>
 <body>
-    <a href="/complaint/"><i class="material-icons">add</i></a>   
     <div class="login">
  
     <table border ="1" >
         <tr>
+            <th>id</th>
         <th>student name</th>
         <th>complaint</th>
         <th>date</th>
         <th>reply</th>
-        <th colspan="2">Action</th>
         </tr>
+        {% for i in val %}
+
         <tr>
-            <td>cs</td>
-            <td>abc</td>
-            <td>abc</td>
-            <td>abc</td>
-            <td><a href="#">edit</a>
-            <a href="#">delete</a></td>
-           
+            <td>{{forloop.counter}}</td>
+            <td>{{i.STUDENTID.name}}</td>
+            <td>{{i.complaint}}</td>
+            <td>{{i.date}}</td>
+
+            <td>{{i.reply}}</td>
         </tr>
-        
+        {% endfor %}
     </table>
     </div>
 </body>

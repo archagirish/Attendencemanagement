@@ -15,12 +15,12 @@
         <th colspan="2">Action</th>
         </tr>
         <tr>
-            <td>exam</td>
-            <td>123</td>
-            <td>456</td>
-            <td>abx</td>
+            <td>{{i.date}}</td>
+            <td>{{i.subject}}</td>
+            <td>{{i.hour"}}></i></td>
+            <td>{{.teacher}}</td>
             <td><a href="#">edit</a>
-            <a href="#">delete</a></td>
+            <a href="/delete_timetable/{{i.id}}" onclick="return confirm('are you sure you want to delete?')">delete</a></td>  
            
         </tr>
         
