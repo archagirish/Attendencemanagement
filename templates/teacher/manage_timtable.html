@@ -12,17 +12,15 @@
         <th>Subject</th>
         <th>Hour</th>
         <th>Teacher</th>
-        <th colspan="2">Action</th>
         </tr>
         <tr>
-            <td>{{i.date}}</td>
-            <td>{{i.subject}}</td>
-            <td>{{i.hour"}}></i></td>
-            <td>{{.teacher}}</td>
-            <td><a href="#">edit</a>
-            <a href="/delete_timetable/{{i.id}}" onclick="return confirm('are you sure you want to delete?')">delete</a></td>  
-           
+            {% for i in val  %}
+            <td>{{i.Date}}</td>
+            <td>{{i.SUBJECTID.subject}}</td>
+            <td>{{i.hour}}</td>
+            <td>{{i.TEACHERID.name}}</td>
         </tr>
+        {% endfor %}
         
     </table>
 </body>

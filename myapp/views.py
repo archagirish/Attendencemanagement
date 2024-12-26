@@ -18,7 +18,9 @@ class Login(View):
         elif login_obj.type=="teacher":
             request.session['LOGINID']=login_obj.id
             return HttpResponse('''<script>alert("Welcome to Teacherhome" );window.location="teacher_dashboard/"</script>''')
-
+class Logout(View):
+    def get(self, request):
+        return render(request,'login.html')
         
 class dashboard(View):
     def get(self, request):
@@ -201,7 +203,7 @@ class Editteacher(View):
         
 class Deleteteacher(View):
     def get(self,request,pk):
-        c=TeacherTable.objects.get(pk=pk)
+        c=LoginTable.objects.get(pk=pk)
         c.delete()
         return HttpResponse('''<script>alert("deleted successfully");window.location="/manage_teacher/"</script>''')
 
@@ -272,7 +274,7 @@ class Subject(View):
             obj=DepartmentTable.objects.get(id=departmentid)
             f.DEPARTMENT=obj
             f.save()
-            return redirect('/manage_subject')
+            return redirect('/managesubject')
         
 class Managesubject(View):
     def get(self,request):
@@ -338,7 +340,6 @@ class Add_report(View):
 class Edit_profile(View):
     def get(self,request):
         obj = TeacherTable.objects.get(LOGINID_id=request.session['LOGINID'])
-
         return render(request,'teacher/edit_profile.html',{'a':obj})
     
 class Edit_report(View):
@@ -368,11 +369,13 @@ class Manage_report(View):
 
 class Manage_subjectallocated(View):
     def get(self,request):
-        return render(request,'teacher/manage_subjectallocated.html')
+        obj=SubjectallocatedTable.objects.all()
+        return render(request,'teacher/manage_subjectallocated.html',{'val':obj} )
     
 class Manage_timtable(View):
     def get(self,request):
-        return render(request,'teacher/manage_timtable.html')
+        obj=TimetableTable.objects.all()
+        return render(request,'teacher/manage_timtable.html',{'val':obj})
     
 class  Manageprofile(View):
     def get(self,request):
@@ -384,7 +387,8 @@ class Profile(View):
     
 class View_staff(View):
     def get(self,request):
-        return render(request,'teacher/view_staff.html')
+        obj=StaffTable.objects.all()
+        return render(request,'teacher/view_staff.html',{'val':obj})
     
 class View_student(View):
     def get(self,request):

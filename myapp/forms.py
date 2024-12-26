@@ -41,12 +41,12 @@ class Addreport(ModelForm):
 class Complaint_form(ModelForm):
     model= ComplaintTable
     fields=['date','complaint','reply','report']
+
+    # ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
     
 class Attendance_form(ModelForm):
     model = AttendanceTable
     fields =['day','hour'] 
-
-
 
 
 

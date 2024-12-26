@@ -26,13 +26,13 @@ class TeacherTable(models.Model):
     SUBJECT=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,null=True,blank=True)
     name = models.CharField(max_length=100,null=True,blank=True)
     email = models.CharField(max_length=100,null=True,blank=True)
-    phonenumber = models.BigIntegerField(max_length=100,null=True,blank=True)
+    phonenumber = models.BigIntegerField(null=True,blank=True)
 
 
 
 class TimetableTable(models.Model):
-    Date = models.CharField(max_length=100,null=True,blank=True)
-    Subject = models.CharField(max_length=100,null=True,blank=True)
+    Date = models.DateField(max_length=100,null=True,blank=True)
+    SUBJECTID=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,blank=True,null=True)
     hour = models.CharField(max_length=100,null=True,blank=True)
     TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
 
@@ -40,7 +40,7 @@ class StudentTable(models.Model):
     LOGINID=models.ForeignKey(LoginTable,on_delete=models.CASCADE,blank=True,null=True)
     name = models.CharField(max_length=100,null=True,blank=True)
     email = models.CharField(max_length=100,null=True,blank=True)
-    phonenumber = models.BigIntegerField(max_length=100,null=True,blank=True)
+    phonenumber = models.BigIntegerField(null=True,blank=True)
     # department = models.CharField(max_length=100,null=True,blank=True)
     DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
 
@@ -75,7 +75,20 @@ class Notification_model(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True,blank=True)
     updated_at = models.DateField(auto_now=True)
 
+# ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
+
+class SubjectallocatedTable(models.Model):
+    TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
+    SUBJECTID=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,blank=True,null=True)
+
+class StaffTable(models.Model):
+    TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
+    SUBJECTID=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,blank=True,null=True)
+    phonenumber = models.BigIntegerField(null=True,blank=True)
 
 
+
+
+    
 
     

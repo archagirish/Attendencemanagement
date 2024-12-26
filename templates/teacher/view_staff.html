@@ -12,12 +12,15 @@
         <th>Name of subject</th>
         <th>Phone number</th>
         </tr>
+        {% for i in val %}
         <tr>
-            <td>cs</td>
-            <td>abc</td>
-            <td>098</td>
+            <td>{{i.TEACHERID.name}}</td>
+            <td>{{i.SUBJECTID.subject}}</td>
+            <td>{{i.phonenumber}}</td>
            
         </tr>
+        {% endfor %}
+
         
     </table>
 </body>
