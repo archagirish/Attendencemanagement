@@ -1,0 +1,22 @@
+
+
+
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="form-container">
+        <h2>Course form</h2>
+        <form id="addForm" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Name of the course </label>
+              <input type="text" class="form-control" id="name" name="CourseName" placeholder="Enter name of the course" value="{{a.CourseName}}" required>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-success py-2" type="submit">Update</button>
+            </div>
+          </form>
+    </div>
+</div>
+{% endblock %}

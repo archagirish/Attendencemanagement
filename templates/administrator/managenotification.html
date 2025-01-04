@@ -1,0 +1,36 @@
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Notification<i class="fa-solid fa-caret-right"></i></h3>
+    <a class="btn btn-primary" href="/notification">Add new Notification</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Notification</th>
+                <th>Date</th>
+                <th colspan="2">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.Notification}}</td>
+                <td>{{i.created_at}}</td>
+                <td><a class="btn btn-warning" href="/edit/{{i.id}}">edit</a>
+                    <a class="btn btn-danger" href="/delete/{{i.id}}"
+                        onclick="return confirm('are you sure you want to delete?')">delete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

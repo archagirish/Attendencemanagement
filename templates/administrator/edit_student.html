@@ -1,0 +1,40 @@
+
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="form-container">
+        <h2>edit student Detials</h2>
+        <form id="addForm" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Name of student</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name of student" value="{{b.name}}" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{b.email}}" required>
+            </div>
+            <div class="mb-3">
+                <label for="text" class="form-label">phone number</label>
+                <input type="text" class="form-control" id="name" name="phonenumber" placeholder="enter phone number"  value="{{b.phonenumber}}">
+              </div>
+              <div class="mb-3">
+                <select name="department" class="form-control">
+                    {% for i in val  %}
+                    <option value="{{i.id}}" {% if b.DEPARTMENT.id == i.id %}selected{% endif %}>{{i.Dept_Name}}</option>
+                   {% endfor %}
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="name"s="form-label">username</label>
+                <input type="text" class="form-control" id="name" name="username" placeholder="username" value="{{b.LOGINID.username}}">
+              </div>
+
+            <div class="mb-3 text-center">
+                <button class="btn btn-success py-2" type="submit">Update</button>
+            </div>
+          </form>
+    </div>
+</div>
+{% endblock %}

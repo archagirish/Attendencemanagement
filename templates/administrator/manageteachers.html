@@ -1,0 +1,40 @@
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Staffs<i class="fa-solid fa-caret-right"></i></h3>
+    <a class="btn btn-primary" href="/teacher/">Add new Teacher</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name of Teacher</th>
+                <th>Name of Subject</th>
+                <th>Phone Number</th>
+                <th colspan="2">Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.DEPARTMENT.Dept_Name}}</td>
+                    <td>{{i.phonenumber}}</td>
+                
+                <td><a class="btn btn-warning" href="/editteacher/{{i.id}}">edit</a>
+                    <a class="btn btn-danger" href="/deleteteacher/{{i.LOGINID.id}}"
+                        onclick="return confirm('are you sure you want to delete?')">delete</a>
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -39,6 +39,7 @@ urlpatterns = [
     path('managesubject/',Managesubject.as_view(),name='managesubject'),
     path('search_subject/',search_subject.as_view(),name='search_subject'),
     path('delete_subject/<int:pk>', Deletesubject.as_view(),name='deletesubject'),
+    path('reply/<int:pk>',reply.as_view(),name="reply"),
     
     
     # //////////////////////////////////////// TEACHER ///////////////////////////////////

@@ -1,0 +1,20 @@
+
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="form-container">
+        <h2>Notification</h2>
+        <form id="addForm" method="post">
+          {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Notification</label>
+              <input type="text" class="form-control" id="name" name="Notification" placeholder="Enter Notification" required>
+            </div>
+            <div class="mb-3 text-center">
+                <button class="btn btn-success py-2" type="submit">Submit</button>
+            </div>
+          </form>
+    </div>
+</div>
+{% endblock %}

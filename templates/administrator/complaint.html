@@ -1,0 +1,26 @@
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="form-container">
+        <h2>Reply Form</h2>
+        <form id="addForm" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Student name</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{c.STUDENTID.name}}" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Complaint</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{c.complaint}}" readonly>
+              </div>
+              <div class="mb-3">
+                <label for="name" class="form-label">Replay</label>
+               <textarea name="reply" class="form-control"  required></textarea>
+              </div>
+              <div class="mb-3 text-center">
+                <button class="btn btn-success py-2" type="submit">Update</button>
+            </div>
+            
+            </form>
+{% endblock %}

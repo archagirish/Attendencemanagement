@@ -2,31 +2,34 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
-   
+
 </head>
+
 <body class="body">
-    <div class="login" >
+    <div class="login">
         <div class="card">
             <h1>Login</h1>
 
             <div class="divider"></div>
 
-    <form class="space" action="" method="post">
-        {% csrf_token %}
-        <input type="text" placeholder="Username" name="username"><br>
-        <input type="password" placeholder="Password" name="password"><br>
-        <a href="#" id="aa">Forget Password ?</a>
-        <button type="submit">Login</button> 
-        <div class="sign">
-            <p>Not a member? <a href="#">sign Up</a></p>
+            <form class="space" action="" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" name="username"><br>
+                <input type="password" placeholder="Password" name="password"><br>
+                <a href="#" id="aa">Forget Password ?</a>
+                <button type="submit">Login</button>
+                <div class="sign">
+                    <p>Not a member? <a href="#">sign Up</a></p>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-</div>
+    </div>
 </body>
+
 </html>

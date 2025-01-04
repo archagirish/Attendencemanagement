@@ -1,0 +1,34 @@
+{% extends 'administrator/base.html'%}
+{% block content %}
+
+<div class="dash">
+  <div class="dash1 color1">
+      <i class="fa-solid fa-users"></i>
+      <div class="cnt">
+          <h4>Students</h4>
+          <span> {{ total_students }}</span>
+      </div>
+  </div>
+  <div class="dash1 color2">
+      <i class="fa-solid fa-school"></i>
+      <div class="cnt">
+          <h4>Teachers</h4>
+          <span> {{ total_teachers }}</span>
+      </div>
+  </div>
+  <div class="dash1 color3">
+      <i class="fa-brands fa-dropbox"></i>
+      <div class="cnt">
+          <h4>Departments</h4>
+          <span> {{ total_departments }}</span>
+      </div>
+  </div>
+  <div class="dash1 color6">
+      <i class="fa-solid fa-question"></i>
+      <div class="cnt">
+          <h4>Complaints</h4>
+          <span> {{ total_Complaints }}</span>
+      </div>
+  </div>
+</div>
+{%endblock%}

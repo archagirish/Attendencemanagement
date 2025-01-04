@@ -1,0 +1,226 @@
+:root {
+    --bg: #e9e3e3;
+    --bg-color: rgb(15, 15, 16);
+    --bg-color1: #03a9f4;
+    --color1: #ab47bc;
+    --color2: #9fcc2e;
+    --color3: #fa9f18;
+    --color4:#4f06ae;
+    --color5:#06ae38;
+    --color6:#ae061f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    padding: 10px;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    h5{
+        color: #fff;
+    }
+}
+
+.prof-div {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    padding-right: 20px;
+
+    img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+}
+
+
+/* Hide the dropdown by default */
+.drp-cnt {
+    display: none;
+    position: absolute;
+    top: -10px;
+    right: -130px;
+    background:transparent;
+    padding: 10px;
+    z-index: 100;
+}
+
+/* Show the dropdown when the parent is clicked */
+.drp.active .drp-cnt {
+    display: block;
+}
+
+/* Styling for the image and container */
+.drp {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.drp img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.drp-cnt a {
+    display: block;
+    color: #ffffff;
+    background-color: rgb(24, 24, 25);
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.drp-cnt a:hover {
+    background: #f1f1f1;
+    border: 2px solid rgb(14, 14, 15);
+}
+
+.div1 {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 15px;
+}
+
+.div1 .sidebar {
+    background-color: var(--bg-color);
+    min-height: 90vh;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 10px 15px rgba(60, 61, 62, 0.723);
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 0 10px 15px;
+    width: 200px;
+    border: 2px solid #fff;
+    border-radius: 25px;
+    margin: 8px;
+
+    &:hover {
+        background-color: #fff;
+        color: #333;
+        letter-spacing: 1px;
+        transition: 0.5s;
+    }
+
+}
+
+.sidebar a:hover i {
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+}
+
+.sidebar a i {
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+.content{
+    padding: 10px;
+}
+/* users page */
+.tbl-div{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.tbl-hd{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+.tbl-div table thead th{
+    background-color:  rgba(12, 12, 12, 0.874);
+    color: #fff;
+}
+.tbl-div table tbody tr:hover{
+background-color: rgba(66, 22, 223, 0.454);
+}
+.add-btn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    box-shadow: 0 5px 20px #333;
+}
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  /* index page designs */
+  .dash{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .dash1{
+    box-shadow: 0 10px 20px #333;
+    padding:60px;
+    height: 150px;
+    width: auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    color: #fff;
+    gap: 20px;
+  }
+  .dash1 i{
+    font-size: 40px;
+  }
+  .color1{
+    background-color: var(--color1);
+  }
+  .color2{
+    background-color: var(--color2);
+  }
+  .color3{
+    background-color: var(--color3);
+  }
+  .color4{
+    background-color: var(--color4);
+  }
+  .color5{
+    background-color: var(--color5);
+  }
+  .color6{
+    background-color: var(--color6);
+  }

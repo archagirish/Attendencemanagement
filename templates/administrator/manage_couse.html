@@ -1,0 +1,35 @@
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Course<i class="fa-solid fa-caret-right"></i></h3>
+        <a class="btn btn-primary" href="/add_course">Add new course</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name of course</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.CourseName}}</td>
+                <td><a class="btn btn-warning" href="/edit_course/{{i.id}}">edit</a>
+                    <a href="/delete_course/{{i.id}}" onclick="return confirm('are you sure you want to delete?')"
+                        class="btn btn-danger">delete</a>
+                </td>
+                <td></td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}

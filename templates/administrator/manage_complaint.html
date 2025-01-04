@@ -1,0 +1,36 @@
+
+
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd d-block">
+        <h3>Complaints<i class="fa-solid fa-caret-right"></i></h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+            <th>student name</th>
+            <th>complaint</th>
+            <th>date</th>
+            <th>reply</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in val %}
+
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.STUDENTID.name}}</td>
+                <td>{{i.complaint}}</td>
+                <td>{{i.date}}</td>
+                <td>{% if i.reply == null %}<a href="/reply/{{i.id}}" class="btn btn-success">reply</a>
+                    {% else %}{{i.reply}}{% endif %}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
