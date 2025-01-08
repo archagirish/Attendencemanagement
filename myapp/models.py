@@ -84,11 +84,8 @@ class SubjectallocatedTable(models.Model):
 class StaffTable(models.Model):
     TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
     SUBJECTID=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,blank=True,null=True)
-    phonenumber = models.BigIntegerField(null=True,blank=True)
+    DEPARTMENTID = models.ForeignKey(DepartmentTable, on_delete=models.CASCADE, blank=True, null=True)
+    sem = models.CharField(max_length=100, null=True, blank=True)
 
-
-
-
-    
 
     

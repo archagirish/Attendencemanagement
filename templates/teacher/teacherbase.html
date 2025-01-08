@@ -20,7 +20,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="{% static 'myStyle.css' %}">
-    <script src="{% static 'js/time.js' %}"></script>
 
 </head>
 
@@ -35,19 +34,21 @@
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLrDHd9pYa8CAuu5YYRtg7hlgJZGURD-2m9_xmjKmnd4odjz6EZ1idAGk&s"
                                 alt="">
                             <div class="drp-cnt">
+                                <a href="#">profile</a>
                                 <a href="/">Logout</a>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
-                <a href="/dashboard">home <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/manage_student">Students <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/manage_teacher">Teachers <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/manage_couse" >Courses <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/manage_dept">Departments <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/managesubject">Subjects <i class="fa-solid fa-caret-right"></i></a>                <a href="/deptsem">Time Table <i class="fa-solid fa-caret-right"></i></a>
-                <a href="/manage_complaint">Complaints <i class="fa-solid fa-caret-right"></i></a>
-                
+                <a href="#">home <i class="fa-solid fa-caret-right"></i></a>
+                <a href="/manage_subjectallocated/">Subject <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#">Time Table <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#" >Attendance <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#">Correction <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#">Notification <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#">Staff <i class="fa-solid fa-caret-right"></i></a>
+                <a href="#">Students <i class="fa-solid fa-caret-right"></i></a>
             </div>
             <div class="content">
                 {% block content %}

@@ -265,6 +265,7 @@ class Teacher(View):
     def get(self,request):
         obj=DepartmentTable.objects.all()
         return render(request,'administrator/teacher.html', {'val': obj})
+
     
     def post(self,request):
         c=Teacher_form(request.POST)
@@ -281,6 +282,19 @@ class Teacher(View):
                 # f.DEPARTMENT=DepartmentTable.objects.get(id=department)
                 f.save()
                 return redirect('/manage_teacher')
+
+class Timetable(View):
+    def get(self,request):
+      
+        return render(request,'administrator/Timetable.html')       
+    
+class Dept_sem(View):
+    def get(self,request):
+        obj=DepartmentTable.objects.all()
+        return render(request,'administrator/Dept_Sem.html',{'val':obj})
+
+
+
             
 class Subject(View):
     def get(self,request):
