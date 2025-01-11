@@ -1,0 +1,27 @@
+{% extends 'administrator/base.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="form-container">
+        <h2 style="text-align: center;" class="mb-4">select the dept</h2>
+          <form id="addForm" method="post">
+              {% csrf_token %}           
+             
+                  <form method="post">
+
+                    <select  name="department" class="form-control">
+                        <option value="#">Department</option>
+                        {% for i in val  %}
+                        <option value="{{i.id}}">{{i.Dept_Name}}</option>
+                        {% endfor %}
+                    </select><br><br>
+                    <label>ClassNo</label>
+                    <input  type="text"  name="ClassNo" >
+
+                      <button type="submit" class="btn btn-primary" style="width: 100%;">Add</button>
+                  </form>
+
+          </form>
+    </div>
+</div>
+
+    {% endblock %}

@@ -107,6 +107,31 @@ class Dept(View):
         if c.is_valid():
             c.save()
             return redirect('manage_dept')
+        
+class Class(View):
+    def get(self, request):
+         obj=ClassTable.objects.all()
+         return render(request, 'administrator/manage_class.html',{'val': obj})
+class Addclass(View):
+    def get(self, request):
+        obj=DepartmentTable.objects.all()
+        return render(request, 'administrator/addclass.html',{'val': obj})
+    def post(self,request):
+        class_no = request.POST.get('ClassNo')
+        department = request.POST.get('department')
+        print("###############", department)
+        dept_obj = DepartmentTable.objects.get(id=department)
+        obj = ClassTable()
+        obj.ClassNo=class_no
+        obj.DEPARTMENT=dept_obj
+        obj.save()
+        return HttpResponse('''<script>alert("added successfully");window.location="/manage_class"</script>''')
+
+class delete_class(View):
+    def get(self, request, pk):
+        obj = ClassTable.objects.get(id=pk)
+        obj.delete()
+        return HttpResponse('''<script>alert("added successfully");window.location="/manage_class"</script>''')
     
 class Complaint(View):
    def get(self, request):
@@ -285,13 +310,20 @@ class Teacher(View):
 
 class Timetable(View):
     def get(self,request):
-      
+        print("##########################")
         return render(request,'administrator/Timetable.html')       
     
 class Dept_sem(View):
     def get(self,request):
-        obj=DepartmentTable.objects.all()
+        obj=ClassTable.objects.all()
         return render(request,'administrator/Dept_Sem.html',{'val':obj})
+    def post(self,request):
+        subj = request.POST['sub']
+        sem = request.POST['sem']
+        request.session['subj'] = subj
+        request.session['sem'] = sem
+        print("##############", request.session['subj'], request.session['sem'])
+        return redirect('timetable')
 
 
 

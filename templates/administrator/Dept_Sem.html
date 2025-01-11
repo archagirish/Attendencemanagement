@@ -6,11 +6,11 @@
           <form id="addForm" method="post">
               {% csrf_token %}           
              
-                  <form>
-                      <select class="form-control mb-4">
-                          <option value="#">please select the department</option>
+                  <form method="post">
+                      <select class="form-control mb-4" name="sub">
+                          <option value="#">please select the class</option>
                           {% for i in val %}
-                          <option value="{{i.id}}">{{i.Dept_Name}}</option>
+                          <option value="{{i.id}}">{{i.ClassNo}}</option>
                           {% endfor %}
 
                       </select>

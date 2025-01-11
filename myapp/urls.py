@@ -42,6 +42,9 @@ urlpatterns = [
     path('reply/<int:pk>',reply.as_view(),name="reply"),
     path('timetable/',Timetable.as_view(),name='timetable'),
     path('deptsem', Dept_sem.as_view(),name='deptsem'),
+    path('manage_class',Class.as_view(),name='manage_class'),
+    path('addclass',Addclass.as_view(),name='addclass'),
+    path('delete_class/<int:pk>',delete_class.as_view(),name="delete_class"),
     
     
     # //////////////////////////////////////// TEACHER ///////////////////////////////////
