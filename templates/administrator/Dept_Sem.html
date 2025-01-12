@@ -7,7 +7,7 @@
               {% csrf_token %}           
              
                   <form method="post">
-                      <select class="form-control mb-4" name="sub">
+                      <select class="form-control mb-4" name="classno">
                           <option value="#">please select the class</option>
                           {% for i in val %}
                           <option value="{{i.id}}">{{i.ClassNo}}</option>

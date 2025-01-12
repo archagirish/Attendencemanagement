@@ -1,27 +1,33 @@
 
 
-{% extends 'administrator/base.html'%}
+{% extends 'teacher/teacherbase.html'%}
 {% block content %}
 <div class="tbl-div">
-    <div class="tbl-hd d-block">
+    <div class="tbl-hd">
         <h3>Subject<i class="fa-solid fa-caret-right"></i></h3>
     </div>
-    <table border="1">
-        <tr>
-        <th>Subject name</th>
-        <th>Subject teacher</th>
-        
-        </tr>
-        {% for i in val  %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name of Subject</th>
+                <th>Name of the Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                {% for i in val  %}
 
-        <tr>
-            <td>{{i.SUBJECTID.subject}}</td>
-            <td>{{i.TEACHERID.name}}</td>
-            <!-- <td><a href="#">edit</a> -->
-            <!-- <a href="#">delete</a></td>
-            -->
-        </tr>
-        {% endfor %}
+                <tr>
+                    <td>{{i.subject.subject}}</td>
+                    <td>{{i.TEACHERID.name}}</td>
+                    <!-- <td><a href="#">edit</a> -->
+                    <!-- <a href="#">delete</a></td>
+                    -->
+                </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
     </table>
 </div>
 {% endblock %}

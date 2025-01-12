@@ -35,18 +35,30 @@ class Subject_form(ModelForm):
         fields=['subject']
 
 class Addreport(ModelForm):
-    model= ReportTable
-    fields=['date','report','reply']
+    class Meta:
+        model= ReportTable
+        fields=['date','report','reply']
 
 class Complaint_form(ModelForm):
-    model= ComplaintTable
-    fields=['date','complaint','reply','report']
+    class Meta:
+        model= ComplaintTable
+        fields=['date','complaint','reply']
 
     # ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
     
 class Attendance_form(ModelForm):
-    model = AttendanceTable
-    fields =['day','hour'] 
+    class Meta:
+        model = AttendanceTable
+        fields =['day','hour'] 
 
+class TimeTable_form(ModelForm):
+    class Meta:
+        model = TimetableTable
+        fields = ['Day', 'CLASS','hour','subject','sem', 'TEACHERID']
+
+class Report_form(ModelForm):
+    class Meta:
+        model = ReportTable
+        fields = ['date','report','reply']
 
 

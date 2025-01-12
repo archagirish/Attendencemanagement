@@ -1,21 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-        <th>Notification</th>
-        <th>Date</th>
-        </tr>
-        <tr>
-            <td>exam</td>
-            <td>123</td>
-        </tr>
-        
+
+
+
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Notification<i class="fa-solid fa-caret-right"></i></h3>
+ 
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Notification</th>
+                <th>Date</th>
+               
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.Notification}}</td>
+                <td>{{i.created_at}}</td>
+
+                </td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
     </table>
-</body>
-</html>
+</div>
+{% endblock %}

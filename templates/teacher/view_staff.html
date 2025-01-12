@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-        <th>Name of teacher</th>
-        <th>Name of subject</th>
-        <th>Phone number</th>
-        </tr>
-        {% for i in val %}
-        <tr>
-            <td>{{i.TEACHERID.name}}</td>
-            <td>{{i.SUBJECTID.subject}}</td>
-            <td>{{i.phonenumber}}</td>
-           
-        </tr>
-        {% endfor %}
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Staffs<i class="fa-solid fa-caret-right"></i></h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name of Teacher</th>
+                <th>Name of Subject</th>
+                <th>Phone Number</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.DEPARTMENT.Dept_Name}}</td>
+                    <td>{{i.phonenumber}}</td>
+            </tr>
+            {% endfor %}
 
-        
+        </tbody>
     </table>
-</body>
-</html>
+</div>
+{% endblock %}

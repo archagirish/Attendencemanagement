@@ -14,6 +14,10 @@ class CourseTable(models.Model):
     department_id=models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
     CourseName = models.CharField(max_length=100,null=True,blank=True)
 
+class ClassTable(models.Model):
+    ClassNo = models.CharField(max_length=100, null=True, blank=True)
+    DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
+
 class SubjectTable(models.Model):
     DEPARTMENT=models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
     subject = models.CharField(max_length=250,null=True,blank=True)
@@ -28,6 +32,13 @@ class TeacherTable(models.Model):
     email = models.CharField(max_length=100,null=True,blank=True)
     phonenumber = models.BigIntegerField(null=True,blank=True)
 
+class TimetableTable(models.Model):
+    Day = models.CharField(max_length=100,null=True,blank=True)
+    CLASS=models.ForeignKey(ClassTable,on_delete=models.CASCADE,blank=True,null=True)
+    hour = models.CharField(max_length=100,null=True,blank=True)
+    subject=models.ForeignKey(SubjectTable,on_delete=models.CASCADE,blank=True,null=True)
+    sem = models.CharField(max_length=100,null=True,blank=True)
+    TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
 
 
 class StudentTable(models.Model):
@@ -69,10 +80,6 @@ class Notification_model(models.Model):
     created_at = models.DateField(auto_now_add=True, null=True,blank=True)
     updated_at = models.DateField(auto_now=True)
 
-class ClassTable(models.Model):
-    ClassNo = models.CharField(max_length=100, null=True, blank=True)
-    DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
-
 
 class SubjectallocatedTable(models.Model):
     TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
@@ -85,13 +92,5 @@ class StaffTable(models.Model):
     sem = models.CharField(max_length=100, null=True, blank=True)
 
 
-class TimetableTable(models.Model):
-    Date = models.DateField(max_length=100,null=True,blank=True)
-    CLASS=models.ForeignKey(ClassTable,on_delete=models.CASCADE,blank=True,null=True)
-    hour = models.CharField(max_length=100,null=True,blank=True)
-    sem = models.CharField(max_length=100,null=True,blank=True)
-    TEACHERID=models.ForeignKey(TeacherTable,on_delete=models.CASCADE,blank=True,null=True)
-    
 
- 
     

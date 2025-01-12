@@ -69,25 +69,48 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Handle form submission
-    document.getElementById("subjectTeacherForm").addEventListener("submit", function (event) {
-        event.preventDefault();
+   
+});
 
-        // Get form values
-        const day = document.getElementById("day").value;
-        const period = document.getElementById("period").value;
-        const department = document.getElementById("department").value;
-        const year = document.getElementById("year").value;
-        const subject = document.getElementById("subject").value;
-        const teacher = document.getElementById("teacher").value;
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = new bootstrap.Modal(document.getElementById("addSubjectTeacherModal"));
 
-        // Example: Log the data or send it to a backend
-        console.log(`Day: ${day}, Period: ${period}, Department: ${department}, Year: ${year}, Subject: ${subject}, Teacher: ${teacher}`);
+    // Attach click event listeners to buttons
+    document.querySelectorAll(".open-modal").forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
 
-        // Close the modal
-        modal.hide();
+            // Get data attributes from the clicked button
+            const day = this.getAttribute("data-day");
+            const period = this.getAttribute("data-period");
+            const subjectId = this.getAttribute("data-subject");
+            const teacherId = this.getAttribute("data-teacher");
 
-        // Optionally reset the form
-        this.reset();
+            // Populate modal fields
+            document.getElementById("day").value = day;
+            document.getElementById("period").value = period;
+
+            // Pre-select subject if editing
+            if (subjectId) {
+                document.querySelector('select[name="subject"]').value = subjectId;
+            } else {
+                document.querySelector('select[name="subject"]').value = "";
+            }
+
+            // Pre-select teacher if editing
+            if (teacherId) {
+                document.querySelector('select[name="TEACHERID"]').value = teacherId;
+            } else {
+                document.querySelector('select[name="TEACHERID"]').value = "";
+            }
+
+            // Update modal title
+            const department = document.getElementById("scheduleTable").getAttribute("data-department");
+            const year = document.getElementById("scheduleTable").getAttribute("data-sem");
+            document.getElementById("addSubjectTeacherLabel").textContent = `Timetable: ${department} - ${year} semester`;
+
+            // Show the modal
+            modal.show();
+        });
     });
 });

@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <tr>
-        <th>Name of Student</th>
-        <th>Roll No</th>
-        <th>Email ID</th>
-        <th>Phone Number</th>
-        <th>Department of Student</th>
-        </tr>
-        <tr>
-            <td>cs</td>
-            <td>abc</td>
-            <td>abc@gmail.com</td>
-            <th>0987</th>
-            <th>cs</th>
-           
-        </tr>
-        
+
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Students<i class="fa-solid fa-caret-right"></i></h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name of Student</th>
+                <th>Email ID</th>
+                <th>Phone Number</th>
+                <th>Department of Student</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.email}}</td>
+                <td>{{i.phonenumber}}</td>
+                <th>{{i.DEPARTMENT.Dept_Name}}</th>
+            </tr>
+            {% endfor %}
+
+        </tbody>
     </table>
-</body>
-</html>
+</div>
+{% endblock %}
