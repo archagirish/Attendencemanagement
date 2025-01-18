@@ -91,6 +91,24 @@ class StaffTable(models.Model):
     DEPARTMENTID = models.ForeignKey(DepartmentTable, on_delete=models.CASCADE, blank=True, null=True)
     sem = models.CharField(max_length=100, null=True, blank=True)
 
+class Timetable1(models.Model):
+    DAY_CHOICES = [
+        ('Monday', 'Monday'),
+        ('Tuesday', 'Tuesday'),
+        ('Wednesday', 'Wednesday'),
+        ('Thursday', 'Thursday'),
+        ('Friday', 'Friday'),
+    ]
+    day = models.CharField(max_length=10, choices=DAY_CHOICES)
+    CLASS = models.ForeignKey(ClassTable, on_delete=models.CASCADE, blank=True, null=True)
+    slot_9_10 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_9_10")
+    slot_10_11 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_10_11")
+    slot_11_12 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_11_12")
+    slot_1_2 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_1_2")
+    slot_2_3 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_2_3")
+    slot_3_4 = models.ForeignKey(SubjectTable, on_delete=models.CASCADE, related_name="slot_3_4")
 
+    def _str_(self):
+        return f"{self.day} Timetable"
 
     

@@ -309,59 +309,62 @@ class Teacher(View):
                 f.save()
                 return redirect('/manage_teacher')
 
-class Timetable(View):
-    def get(self,request,cls,sem):
-        obj=SubjectTable.objects.all()
-        a=TeacherTable.objects.all()
-        print("aaaaaaaaaaaaaaaaaaaaaaa",obj)
-        print("##########################")
-        print("fffffffffffffffffffffffffff",a)
-        return render(request,'administrator/Timetable.html',{'cls':cls,'sem':sem})   
+class select_class_staff(View):
+    def get(self,request):
+        obj = ClassTable.objects.all()
+        return render(request, "teacher/select_class.html", {'obj': obj})  
+
+
+class manage_timetable(View):
     def post(self, request):
-        print("hhhhhhhhhhhhhhhhhhhhh")
-        c = TimeTable_form(request.POST)
-        cls=request.POST['CLASS']
-        sem=request.POST['sem']
-        if c.is_valid():
-            c.save()
-            redirect_url = reverse('Timetableview', kwargs={'cls': cls, 'sem': sem})
-        
-            return HttpResponse(f'''<script>alert("Time Table added successfully");window.location="{redirect_url}"</script>''')
-
-class Timetableview(View):
-    def get(self,request,cls,sem):
-        obj=SubjectTable.objects.all()
-        a=TeacherTable.objects.all()
-        classno=ClassTable.objects.get(id=cls)
-        obj=SubjectTable.objects.all()
-        a=TeacherTable.objects.all()
-        print("aaaaaaaaaaaaaaaaaaaaaaa",obj)
-        print("##########################")
-        print("fffffffffffffffffffffffffff",a)
-        
-        # Fetch timetable data for the given class and semester
-        timetable = TimetableTable.objects.filter(CLASS=classno, sem=sem)
-
-        # Organize timetable data into a dictionary
-        schedule = {}
-        for entry in timetable:
-            if entry.Day not in schedule:
-                schedule[entry.Day] = {}
-            schedule[entry.Day][entry.hour] = entry
-        context = {
-            'classno': classno,
-            'sem': sem,
-            'val': obj,
-            'c': a,
-            'schedule': schedule,
-            'days': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-            'periods': ['1', '2', '3', '4', '5'],
-        }
-
-
-        return render(request,'administrator/Timetable.html',context)   
- 
+        class_id=request.POST['class_id']
+        request.session['class_id']=class_id
+        class_obj = ClassTable.objects.get(id=class_id)
+        subjects = SubjectTable.objects.filter(DEPARTMENT_id=class_obj.DEPARTMENT.id)
+        existing_days = Timetable1.objects.filter(CLASS_id=class_obj).values_list('day', flat=True)
+        all_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        available_days = [day for day in all_days if day not in existing_days]
+        return render(request, 'teacher/manage_timetable.html', {
+            'subjects': subjects,
+            'available_days': available_days
+        })
     
+class add_timetable_action(View):
+    def post(self, request):
+        day = request.POST['day']
+        slot_9_10 = request.POST['slot_9_10']
+        slot_10_11 = request.POST['slot_10_11']
+        slot_11_12 = request.POST['slot_11_12']
+        slot_1_2 = request.POST['slot_1_2']
+        slot_2_3 = request.POST['slot_2_3']
+        slot_3_4 = request.POST['slot_3_4']
+        obj = Timetable1()
+        obj.CLASS=ClassTable.objects.get(id=request.session['class_id'])
+        obj.day=day
+        obj.slot_9_10=SubjectTable.objects.get(id=slot_9_10)
+        obj.slot_10_11=SubjectTable.objects.get(id=slot_10_11)
+        obj.slot_11_12=SubjectTable.objects.get(id=slot_11_12)
+        obj.slot_1_2=SubjectTable.objects.get(id=slot_1_2)
+        obj.slot_2_3=SubjectTable.objects.get(id=slot_2_3)
+        obj.slot_3_4=SubjectTable.objects.get(id=slot_3_4)
+        obj.save()
+        return HttpResponse('''<script>alert("successfully added");window.location="/select_class_staff#about"</script>''')
+
+class select_class_staff1(View):
+    def get(self,request):
+        obj = ClassTable.objects.all()
+        return render(request, "teacher/select_class1.html", {'obj': obj})
+    
+class view_timetable(View):
+    def post(self, request):
+        class_id=request.POST['class_id']
+        # Query all timetable entries from the database
+        timetable_entries = Timetable1.objects.filter(CLASS_id=class_id).order_by('day')
+        # Render the timetable in a template
+        return render(request, 'teacher/timetable.html', {'timetable_entries': timetable_entries})    
+
+
+
 class Dept_sem(View):
     def get(self,request):
         obj=ClassTable.objects.all()
@@ -527,8 +530,17 @@ class Manage_subjectallocated(View):
     
 class Manage_timtable(View):
     def get(self,request):
-        obj=TimetableTable.objects.all()
-        return render(request,'teacher/manage_timtable.html',{'val':obj})
+         class_id=request.POST['class_id']
+         request.session['class_id']=class_id
+         class_obj = ClassTable.objects.get(id=class_id)
+         subjects = SubjectTable.objects.filter(DEPARTMENT_id=class_obj.department.id)
+         existing_days = Timetable1.objects.filter(CLASS_id=class_obj).values_list('day', flat=True)
+         all_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+         available_days = [day for day in all_days if day not in existing_days]
+         return render(request, 'teacher/manage_timetable.html', {
+        'subjects': subjects,
+        'available_days': available_days
+        })
     
 class  Manageprofile(View):
     def get(self,request):

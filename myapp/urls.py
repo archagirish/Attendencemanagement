@@ -40,8 +40,6 @@ urlpatterns = [
     path('search_subject/',search_subject.as_view(),name='search_subject'),
     path('delete_subject/<int:pk>', Deletesubject.as_view(),name='deletesubject'),
     path('reply/<int:pk>',reply.as_view(),name="reply"),
-    path('timetable',Timetable.as_view(),name='timetable'),
-    path('Timetableview/<int:cls>/<int:sem>',Timetableview.as_view(),name='Timetableview'),
     path('deptsem', Dept_sem.as_view(),name='deptsem'),
     path('manage_class',Class.as_view(),name='manage_class'),
     path('addclass',Addclass.as_view(),name='addclass'),
@@ -64,6 +62,11 @@ path('profile/', Profile.as_view(),name='profile'),
 path('view_staff/', View_staff.as_view(),name='view_staff'),
 path('view_student/', View_student.as_view(),name='view_student'),
 path('viewnotification/', Viewnotification.as_view(),name='viewnotification'),
+path('select_class_staff/', select_class_staff.as_view(),name='select_class_staff'),
+path('manage_timetable', manage_timetable.as_view(),name='manage_timetable'),
+path('add_timetable_action', add_timetable_action.as_view(),name='add_timetable_action'),
+path('select_class_staff1', select_class_staff1.as_view(),name='select_class_staff1'),
+path('view_timetable', view_timetable.as_view(),name='view_timetable'),
 
 
 
