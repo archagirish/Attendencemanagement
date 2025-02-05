@@ -1,0 +1,31 @@
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
+
+
+
+<form id="form1" name="form1" method="post" action="view_attendace_staff">
+  {% csrf_token %}
+  <table width="200" class="table table-dark table-hover mt-5">
+    <tr>
+      <th>CLASS</th>
+      <td>
+        <select name="class_id" style="width: 200px;" class="form-control">
+          {% for i in obj %}
+          <option value="{{ i.id }}">{{ i.ClassNo }}</option>
+          {% endfor %}
+        </select>
+      </td>
+      <td>
+        <input type="date" name="date" class="form-control" required>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center">
+        <input type="submit" value="Enter" class="btn btn-light" style="width: 50%;">
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+{% endblock %}

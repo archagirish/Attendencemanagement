@@ -4,7 +4,7 @@
 <div class="tbl-div">
     <div class="form-container">
         <h2>Student registration form</h2>
-        <form id="addForm" method="post">
+        <form id="addForm" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="mb-3">
               <label for="name" class="form-label">Name of student</label>
@@ -19,9 +19,14 @@
                 <input type="text" class="form-control" id="name" name="phonenumber" placeholder="enter phone number">
               </div>
               <div class="mb-3">
-                <select name="DEPARTMENT" class="form-control">
+                <label for="text" class="form-label">Image</label>
+                <input type="file" class="form-control" id="name" name="image">
+              </div>
+              <div class="mb-3">
+                <label for="text" class="form-label">Class no</label>
+                <select name="class_no" class="form-control">
                     {% for i in val  %}
-                    <option value="{{i.id}}">{{i.Dept_Name}}</option>
+                    <option value="{{i.id}}">{{i.ClassNo}}</option>
                     {% endfor %}
                 </select>
               </div>

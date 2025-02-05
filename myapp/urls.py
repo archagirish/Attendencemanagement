@@ -1,6 +1,7 @@
 
 from django.urls import path
 from .views import *
+from myapp import views
 
 
 urlpatterns = [
@@ -67,7 +68,19 @@ path('manage_timetable', manage_timetable.as_view(),name='manage_timetable'),
 path('add_timetable_action', add_timetable_action.as_view(),name='add_timetable_action'),
 path('select_class_staff1', select_class_staff1.as_view(),name='select_class_staff1'),
 path('view_timetable', view_timetable.as_view(),name='view_timetable'),
+path('view_attendace_staff', view_attendace_staff.as_view(),name='view_attendace_staff'),
+path('select_slot', select_slot.as_view(),name='select_slot'),
+path('take_attendance', take_attendance.as_view(),name='take_attendance'),
+path('leave/',Leave.as_view(),name='leave'),
+path('accept_leave/<int:r_id>',accept_leave.as_view(),name='accept_leave'),
+path('reject_leave/<int:r_id>',reject_leave.as_view(),name='reject_leave'),
+# //////////////////////////// API /////////////////////////////////////////
 
-
-
+    path('StudentReg', views.StudentReg.as_view(), name="StudentReg"),
+    path('login_code', views.LoginPageApi.as_view(), name="login_code"),
+    path('ViewTimeTable/<int:lid>', views.ViewTimeTable.as_view(), name="ViewTimeTable"),
+    path('ViewAttendanceApi/<int:lid>', views.ViewAttendanceApi.as_view(), name="ViewAttendanceApi"),
+    path('ViewProfileApi/<int:lid>', views.ViewProfileApi.as_view(), name="ViewProfileApi"),
+    path('NotificationApi', views.NotificationApi.as_view(), name="NotificationApi"),
+    path('SendComplaintApi/<int:lid>', views.SendComplaintApi.as_view(), name="SendComplaintApi"),
 ]

@@ -11,6 +11,7 @@
             <tr>
                 <th>id</th>
                 <th>Name of Student</th>
+                <th>Image</th>
                 <th>Email ID</th>
                 <th>Phone Number</th>
                 <th>Department of Student</th>
@@ -23,9 +24,10 @@
             <tr>
                 <td>{{forloop.counter}}</td>
                 <td>{{i.name}}</td>
+                <td><img src="{{i.image.url}}" alt="image" width="50" height="50"></td>
                 <td>{{i.email}}</td>
                 <td>{{i.phonenumber}}</td>
-                <th>{{i.DEPARTMENT.Dept_Name}}</th>
+                <th>{{i.CLASS.DEPARTMENT.Dept_Name}}</th>
                 <td><a class="btn btn-warning" href="/editstudent/{{i.id}}">edit</a>
                     <a class="btn btn-danger" href="/deletestudent/{{i.id}}"
                         onclick="return confirm('are you sure you want to delete?')">delete</a>

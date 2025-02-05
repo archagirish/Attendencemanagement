@@ -1,14 +1,15 @@
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
 
-<html>
-<body>
+
     
     <form id="form1" name="form1" method="post" action="{% url 'manage_timetable' %}">
       {% csrf_token %}
-      <table width="200" border="1" class="table table-dark table-hover">
+      <table width="200" class="table table-dark table-hover">
         <tr>
           <th>CLASS</th>
           <td>
-            <select name="class_id" style="width: 200px;">
+            <select name="class_id" style="width: 500px; margin-left: 230px; padding: 5px; border-radius: 10px;" >
               {% for i in obj %}
               <option value="{{i.id}}">{{ i.ClassNo }}</option>
               {% endfor %}  
@@ -17,10 +18,11 @@
         </tr>
         <tr>
           <td colspan="2" align="center">
-            <input type="submit" value="enter">
+            <input type="submit" class="btn btn-light" style="width: 40%;" value="enter">
           </td>
         </tr>
       </table>
     </form>
-    </body>
-    </html>
+  
+
+    {% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance by Slot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance for {{ date }}</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Slot 9-10</th>
+                <th>Slot 10-11</th>
+                <th>Slot 11-12</th>
+                <th>Slot 1-2</th>
+                <th>Slot 2-3</th>
+                <th>Slot 3-4</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in attendance_data %}
+            <tr>
+                <td>{{ record.student.name }}</td>
+                <td>{{ record.attendance.slot_9_10|default:"-" }}</td>
+                <td>{{ record.attendance.slot_10_11|default:"-" }}</td>
+                <td>{{ record.attendance.slot_11_12|default:"-" }}</td>
+                <td>{{ record.attendance.slot_1_2|default:"-" }}</td>
+                <td>{{ record.attendance.slot_2_3|default:"-" }}</td>
+                <td>{{ record.attendance.slot_3_4|default:"-" }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

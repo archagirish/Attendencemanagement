@@ -73,7 +73,6 @@ color: rgb(226, 128, 128);
 }
 
 button{
-    width: 110%;
     margin-top: 50px;
     padding:7px ;
     border-radius: 50px;
@@ -191,5 +190,3 @@ th,td{
 table{
     border-collapse: collapse;
 }
-
-

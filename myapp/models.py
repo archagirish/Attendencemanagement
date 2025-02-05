@@ -46,14 +46,23 @@ class StudentTable(models.Model):
     name = models.CharField(max_length=100,null=True,blank=True)
     email = models.CharField(max_length=100,null=True,blank=True)
     phonenumber = models.BigIntegerField(null=True,blank=True)
+    image = models.FileField()
     # department = models.CharField(max_length=100,null=True,blank=True)
-    DEPARTMENT = models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
+    CLASS = models.ForeignKey(ClassTable,on_delete=models.CASCADE,null=True,blank=True)
 
-class  AttendanceTable(models.Model):
-    StudentID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)
-    day = models.CharField(max_length=100,null=True,blank=True)  
-    hour = models.CharField(max_length=100,null=True,blank=True)
-
+class AttendanceTable(models.Model):
+    SLOT_CHOICES = [
+        ('slot_9_10', 'slot_9_10'),
+        ('slot_10_11', 'slot_10_11'),
+        ('slot_11_12', 'slot_11_12'),
+        ('slot_1_2', 'slot_1_2 '),
+        ('slot_2_3', 'slot_2_3 '),
+        ('slot_3_4', 'slot_3_4'),
+    ]
+    Date = models.DateField(max_length=20)
+    Period=models.CharField(max_length=250,null=True,blank=True, choices=SLOT_CHOICES)
+    Attendance = models.CharField(max_length=20)
+    STUDENT_ID = models.ForeignKey(StudentTable, on_delete=models.CASCADE)
 
 
 class ReportTable(models.Model):
@@ -71,8 +80,10 @@ class ComplaintTable(models.Model):
 
 class DutyrequestTable(models.Model):
     STUDENTID=models.ForeignKey(StudentTable,on_delete=models.CASCADE,blank=True,null=True)
-    department=models.CharField(max_length=100,null=True,blank=True)
+    slot=models.CharField(max_length=100,null=True,blank=True)
     reason=models.CharField(max_length=100,null=True,blank=True)
+    status=models.CharField(max_length=100,null=True,blank=True)
+    date = models.DateField(auto_now_add=True)
 
 
 class Notification_model(models.Model):

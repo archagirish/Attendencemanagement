@@ -16,23 +16,24 @@
               <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" value="{{b.email}}" required>
             </div>
             <div class="mb-3">
-                <label for="text" class="form-label">phone number</label>
+                <label for="text" class="form-label">Phone number</label>
                 <input type="text" class="form-control" id="name" name="phonenumber" placeholder="enter phone number"  value="{{b.phonenumber}}">
               </div>
               <div class="mb-3">
-                <select name="department" class="form-control">
+                <label for="text" class="form-label">Class no</label>
+                <select name="class_no" class="form-control">
                     {% for i in val  %}
-                    <option value="{{i.id}}" {% if b.DEPARTMENT.id == i.id %}selected{% endif %}>{{i.Dept_Name}}</option>
+                    <option value="{{i.id}}" {% if b.CLASS.id == i.id %}selected{% endif %}>{{i.ClassNo}}</option>
                    {% endfor %}
                 </select>
               </div>
               <div class="mb-3">
-                <label for="name"s="form-label">username</label>
+                <label for="name"s="form-label">Username</label>
                 <input type="text" class="form-control" id="name" name="username" placeholder="username" value="{{b.LOGINID.username}}">
               </div>
 
             <div class="mb-3 text-center">
-                <button class="btn btn-success py-2" type="submit">Update</button>
+                <button class="btn btn-success" type="submit"  style="width: 100%;">Update</button>
             </div>
           </form>
     </div>

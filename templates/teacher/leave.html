@@ -1,0 +1,41 @@
+
+
+{% extends 'teacher/teacherbase.html'%}
+{% block content %}
+<div class="tbl-div">
+    <div class="tbl-hd">
+        <h3>Subject<i class="fa-solid fa-caret-right"></i></h3>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name of Student</th>
+                <th>Slot No</th>
+                <th>Reason</th>
+                <th>status</th>
+        
+     
+            </tr>
+        </thead>
+        <tbody>
+           
+            <tr>
+                {% for i in a  %}
+
+                <tr>
+                    <td>{{i.STUDENTID.name}}</td>
+                    <td>{{i.slot}}</td>
+                    <td>{{i.reason}}</td>
+                    <td>
+                    <a href="/accept_leave/{{ i.id }}">Accept</a>
+                    <a href="/reject_leave/{{ i.id }}">Reject</a>
+                    
+                </td>
+    
+                </tr>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

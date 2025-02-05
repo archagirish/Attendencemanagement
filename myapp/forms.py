@@ -22,7 +22,7 @@ class Course_form(ModelForm):
 class Adduser_form(ModelForm):
     class Meta:
         model=StudentTable
-        fields=['name','email','phonenumber','DEPARTMENT']  
+        fields=['name','email','phonenumber', 'image']  
 
 class Teacher_form(ModelForm):
     class Meta:
@@ -46,11 +46,6 @@ class Complaint_form(ModelForm):
 
     # ///////////////////////////////////////////// TEACHER ///////////////////////////////////////////
     
-class Attendance_form(ModelForm):
-    class Meta:
-        model = AttendanceTable
-        fields =['day','hour'] 
-
 class TimeTable_form(ModelForm):
     class Meta:
         model = TimetableTable
